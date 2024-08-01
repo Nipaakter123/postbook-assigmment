@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postbook</title>
+    <link rel="stylesheet" href="./poststyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+ </head>
+ <body onload = "checkLoggedInUser(); onload = showLoggedUsername()">
+ <div class="header">
+    <h1>Hello,<span id="logged-username">Username</span></h1>
+    <button onclick="logOut()" class="logoutbtn">Logout</button>
+
+ </div>
+
+ <section id = "add-post-container">
+    <article>
+        <h2>Add New Post</h2>
+
+        <div>
+            <textarea name=""
+            id="newPost-text" 
+            cols="50" 
+            rows="5" 
+            placeholder="Add post text" 
+           ></textarea>
+        </div>
+    
+        <div>
+            <input type="text" 
+             id ="newPost-image" 
+            placeholder="Add post image Url"
+            />
+        </div>
+    
+        <div>
+            <button onclick="handleAddNewPost()" class="addPost-btn">POST</button>
+        </div>
+
+    </article>
+     </section>
+  
+
+
+
+ <section id ="post-container"> 
+
+  <!-- post -->
+ <div class="post">
+    <div class="post-header">
+        <div class="post-user-image">
+            <img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjMxNDY4ODE2NTQtaW1hZ2Uta295NWoyeG4uanBn.jpg"alt="post-user-image">
+
+        </div>
+
+        <div class="post-username-time">
+           <p class="post-username">username</p>
+           <div class="posted-time">
+            <span>13</span>
+            <span>hours ago</span>
+           </div>
+        </div>
+    </div>
+
+    <div class="post-text">
+
+        <p class="post-text-content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente maiores itaque sit labore doloribus odit consequuntur non blanditiis reiciendis? Aperiam.
+        </p>
+    </div>
+
+    <div class="post-image">
+     
+        <img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjMxNDY4ODE2NTQtaW1hZ2Uta295NWoyeG4uanBn.jpg" alt="post-image"
+        />
+    </div>
+
+    <!-- comments under a single post -->
+     <div class="comments-holder">
+        <div class="comment">
+            <div class="comment-user-image">
+                <img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjMxNDY4ODE2NTQtaW1hZ2Uta295NWoyeG4uanBn.jpg" alt="comment-user-image"
+                />
+            </div>
+            <div class="comment-text-container">
+                <h4>Commented Username</h4>
+                <p class="comment-text">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, minus!
+                </p>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="comment-user-image">
+                <img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjMxNDY4ODE2NTQtaW1hZ2Uta295NWoyeG4uanBn.jpg" alt="comment-user-image"
+                />
+            </div>
+            <div class="comment-text-container">
+                <h4>Commented Username</h4>
+                <p class="comment-text">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, minus!
+                </p>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="comment-user-image">
+                <img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjMxNDY4ODE2NTQtaW1hZ2Uta295NWoyeG4uanBn.jpg" alt="comment-user-image"
+                />
+            </div>
+            <div class="comment-text-container">
+                <h4>Commented Username</h4>
+                <p class="comment-text">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, minus!
+                </p>
+            </div>
+        </div>
+     </div>
+
+     <!-- new comment input field -->
+     <div class="postComment-holder">
+        <div class="post-comment-input-field-holder">
+            <input 
+            type="text" 
+            placeholder="Post your comments"
+            class="postComment-input-field"
+             id="postComment-input-for-postId1"
+             />
+        </div>
+        <div class="comment-btn-holder">
+            <button id="comment-btn" class="postComment-btn">Comment</button>
+        </div>
+     </div>
+ </div>
+
+  <!-- post -->
+  <div class="post">
+    <div class="post-header">
+        <div class="post-user-image">
+            <img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjMxNDY4ODE2NTQtaW1hZ2Uta295NWoyeG4uanBn.jpg"alt="post-user-image">
+
+        </div>
+
+        <div class="post-username-time">
+           <p class="post-username">username</p>
+           <div class="posted-time">
+            <span>13</span>
+            <span>hours ago</span>
+           </div>
+        </div>
+    </div>
+
+    <div class="post-text">
+
+        <p class="post-text-content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente maiores itaque sit labore doloribus odit consequuntur non blanditiis reiciendis? Aperiam.
+        </p>
+    </div>
+
+    <div class="post-image">
+     
+        <img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjMxNDY4ODE2NTQtaW1hZ2Uta295NWoyeG4uanBn.jpg" alt="post-image"
+        />
+    </div>
+
+    <!-- comments under a single post -->
+     <div class="comments-holder">
+        <div class="comment">
+            <div class="comment-user-image">
+                <img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjMxNDY4ODE2NTQtaW1hZ2Uta295NWoyeG4uanBn.jpg" alt="comment-user-image"
+                />
+            </div>
+            <div class="comment-text-container">
+                <h4>Commented Username</h4>
+                <p class="comment-text">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, minus!
+                </p>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="comment-user-image">
+                <img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjMxNDY4ODE2NTQtaW1hZ2Uta295NWoyeG4uanBn.jpg" alt="comment-user-image"
+                />
+            </div>
+            <div class="comment-text-container">
+                <h4>Commented Username</h4>
+                <p class="comment-text">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, minus!
+                </p>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="comment-user-image">
+                <img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjMxNDY4ODE2NTQtaW1hZ2Uta295NWoyeG4uanBn.jpg" alt="comment-user-image"
+                />
+            </div>
+            <div class="comment-text-container">
+                <h4>Commented Username</h4>
+                <p class="comment-text">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, minus!
+                </p>
+            </div>
+        </div>
+     </div>
+
+     <!-- new comment input field -->
+     <div class="postComment-holder">
+        <div class="post-comment-input-field-holder">
+            <input 
+            type="text" 
+            placeholder="Post your comments"
+            class="postComment-input-field"
+             id="postComment-input-for-postId1"
+             />
+        </div>
+        <div class="comment-btn-holder">
+            <button id="comment-btn" class="postComment-btn">Comment</button>
+        </div>
+     </div>
+ </div>
+
+  <!-- post -->
+  <div class="post">
+    <div class="post-header">
+        <div class="post-user-image">
+            <img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjMxNDY4ODE2NTQtaW1hZ2Uta295NWoyeG4uanBn.jpg"alt="post-user-image">
+
+        </div>
+
+        <div class="post-username-time">
+           <p class="post-username">username</p>
+           <div class="posted-time">
+            <span>13</span>
+            <span>hours ago</span>
+           </div>
+        </div>
+    </div>
+
+    <div class="post-text">
+
+        <p class="post-text-content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente maiores itaque sit labore doloribus odit consequuntur non blanditiis reiciendis? Aperiam.
+        </p>
+    </div>
+
+    <div class="post-image">
+     
+        <img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjMxNDY4ODE2NTQtaW1hZ2Uta295NWoyeG4uanBn.jpg" alt="post-image"
+        />
+    </div>
+
+    <!-- comments under a single post -->
+     <div class="comments-holder">
+        <div class="comment">
+            <div class="comment-user-image">
+                <img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjMxNDY4ODE2NTQtaW1hZ2Uta295NWoyeG4uanBn.jpg" alt="comment-user-image"
+                />
+            </div>
+            <div class="comment-text-container">
+                <h4>Commented Username</h4>
+                <p class="comment-text">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, minus!
+                </p>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="comment-user-image">
+                <img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjMxNDY4ODE2NTQtaW1hZ2Uta295NWoyeG4uanBn.jpg" alt="comment-user-image"
+                />
+            </div>
+            <div class="comment-text-container">
+                <h4>Commented Username</h4>
+                <p class="comment-text">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, minus!
+                </p>
+            </div>
+        </div>
+        <div class="comment">
+            <div class="comment-user-image">
+                <img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjMxNDY4ODE2NTQtaW1hZ2Uta295NWoyeG4uanBn.jpg" alt="comment-user-image"
+                />
+            </div>
+            <div class="comment-text-container">
+                <h4>Commented Username</h4>
+                <p class="comment-text">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, minus!
+                </p>
+            </div>
+        </div>
+     </div>
+
+     <!-- new comment input field -->
+     <div class="postComment-holder">
+        <div class="post-comment-input-field-holder">
+            <input 
+            type="text" 
+            placeholder="Post your comments"
+            class="postComment-input-field"
+             id="postComment-input-for-postId1"
+             />
+        </div>
+        <div class="comment-btn-holder">
+            <button id="comment-btn" class="postComment-btn">Comment</button>
+        </div>
+     </div>
+ </div>
+
+</section>
+
+<script src="./js/utils/calculateTimeDifference.js"></script>
+
+<script src="./js/fetchData.js"></script>
+</body>
+</html>
